@@ -1,21 +1,26 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
-import ResetPasswordPage from './pages/ResetPasswordPage';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './pages/Navbar';  // Import Navbar
 import HomePage from './pages/HomePage';
+import CarRentalPage from './pages/CarRentalPage';
+import SelfDrivingCarPage from './pages/SelfDrivingCarPage';
+import ActingDriverPage from './pages/ActingDriverPage'; // Import the Acting Driver Page
 
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/reset-password" element={<ResetPasswordPage />} />
-      <Route path="/home" element={<HomePage />} />
-    </Routes>
-  );
-}
+    <div>
+      {/* Navbar */}
+      <Navbar />
 
+      {/* Routes for Pages */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/car-rental" element={<CarRentalPage />} />
+        <Route path="/self-driving" element={<SelfDrivingCarPage />} />
+        <Route path="/acting-drivers" element={<ActingDriverPage />} />
+      </Routes>
+    </div>
+  );
+};
 
 export default App;

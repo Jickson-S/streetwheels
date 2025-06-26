@@ -1,113 +1,59 @@
 import React from 'react';
-import { FaCar,FaSearch, FaStar, FaHeart, FaUserCircle, FaMapMarkerAlt, FaChair, FaHome, FaBell, FaCommentDots, FaUser } from 'react-icons/fa';
-import { TbSettings2 } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
 
-export default function HomePage() {
+const HomePage = () => {
   return (
-    <div className="bg-white min-h-screen pb-24 px-4">
-      {/* Header */}
-      <div className="flex justify-between items-center py-4">
-        <div className="flex items-center space-x-2">
-          <FaCar className="text-xl" />
-          <h1 className="text-xl font-bold">Qent</h1>
-        </div>
-        <div className="flex space-x-4 items-center">
-          <TbSettings2 className="text-2xl" />
-          <FaUserCircle className="text-2xl" />
-        </div>
-      </div>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Hero Section */}
+      <header className="bg-blue-600 text-white text-center py-20">
+        <h1 className="text-4xl font-bold">Welcome to StreetWheels Car Rental</h1>
+        <p className="mt-4 text-xl">Your best choice for car rentals, self-driving cars, and reliable acting drivers.</p>
+      </header>
 
-      {/* Search Bar */}
-      <div className="relative mb-6">
-        <FaSearch className="absolute left-3 top-3 text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search your dream car..."
-          className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none"
-        />
-      </div>
+      {/* Introduction Section */}
+      <section className="text-center py-20 px-4 bg-white">
+        <h2 className="text-3xl font-semibold text-gray-800">Our Services</h2>
+        <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+          At StreetWheels, we offer a wide range of vehicles for your driving needs, from traditional rentals to self-driving cars and acting drivers.
+        </p>
+      </section>
 
-      {/* Brand List */}
-      <div className="mb-6">
-        <h3 className="font-semibold mb-2">Brands</h3>
-        <div className="flex space-x-6 overflow-x-auto pb-2">
-          {["Tesla", "Lamborghini", "BMW", "Ferrari"].map((brand, idx) => (
-            <div key={idx} className="flex flex-col items-center">
-              <div className="w-14 h-14 rounded-full bg-black flex justify-center items-center text-white font-semibold">
-                {brand[0]}
-              </div>
-              <span className="text-sm mt-1">{brand}</span>
+      {/* Services Section */}
+      <section className="py-16 px-4 bg-gray-100">
+        <h2 className="text-3xl font-semibold text-center text-gray-800 mb-12">Explore Our Services</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {/* Car Rental */}
+          <Link to="/car-rental" className="bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:scale-105">
+            <div className="p-6 text-center">
+              <h3 className="text-2xl font-bold text-blue-600">Car Rentals</h3>
+              <p className="mt-2 text-gray-600">Browse through our fleet of vehicles available for rent.</p>
             </div>
-          ))}
-        </div>
-      </div>
+          </Link>
 
-      {/* Best Cars */}
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-semibold">Best Cars</h3>
-          <a href="#" className="text-sm text-gray-500 hover:underline">View All</a>
-        </div>
-
-        <div className="flex space-x-4 overflow-x-auto pb-2">
-          {[{
-            name: "Ferrari-FF",
-            location: "Washington DC",
-            rating: 5.0,
-            seats: 4,
-            price: "$200/Day",
-            image: "https://i.imgur.com/6qTAgYv.png",
-          },
-          {
-            name: "Tesla Model S",
-            location: "Chicago, USA",
-            rating: 5.0,
-            seats: 5,
-            price: "$100/Day",
-            image: "https://i.imgur.com/fQZL7CR.png",
-          }].map((car, index) => (
-            <div key={index} className="bg-white shadow rounded-xl w-64 flex-shrink-0">
-              <img src={car.image} alt={car.name} className="rounded-t-xl h-32 w-full object-cover" />
-              <div className="p-3">
-                <div className="flex justify-between items-center mb-1">
-                  <h4 className="font-semibold">{car.name}</h4>
-                  <FaHeart className="text-gray-400" />
-                </div>
-                <div className="flex items-center text-sm text-yellow-500 mb-1">
-                  <FaStar className="mr-1" /> {car.rating}
-                </div>
-                <div className="flex items-center text-xs text-gray-500 mb-1">
-                  <FaMapMarkerAlt className="mr-1" /> {car.location}
-                </div>
-                <div className="flex justify-between text-xs text-gray-600">
-                  <span className="flex items-center"><FaChair className="mr-1" /> {car.seats} Seats</span>
-                  <span className="font-semibold">{car.price}</span>
-                </div>
-              </div>
+          {/* Self-Driving Cars */}
+          <Link to="/self-driving" className="bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:scale-105">
+            <div className="p-6 text-center">
+              <h3 className="text-2xl font-bold text-blue-600">Self Driving Cars</h3>
+              <p className="mt-2 text-gray-600">Drive a car on your own, with our fully automated self-driving options.</p>
             </div>
-          ))}
-        </div>
-      </div>
+          </Link>
 
-      {/* Nearby Section (Placeholder for now) */}
-      <div className="mb-6">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-semibold">Nearby</h3>
-          <a href="#" className="text-sm text-gray-500 hover:underline">View All</a>
+          {/* Acting Drivers */}
+          <Link to="/acting-drivers" className="bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:scale-105">
+            <div className="p-6 text-center">
+              <h3 className="text-2xl font-bold text-blue-600">Available Acting Drivers</h3>
+              <p className="mt-2 text-gray-600">Hire a professional driver for your trips. Available now and on-demand.</p>
+            </div>
+          </Link>
         </div>
-        <div className="bg-gray-200 rounded-xl h-36 flex justify-center items-center">
-          <p className="text-gray-500">Nearby cars carousel here</p>
-        </div>
-      </div>
+      </section>
 
-      {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-inner border-t border-gray-200 p-3 px-6 rounded-t-2xl flex justify-between items-center z-10">
-        <FaHome className="text-xl" />
-        <FaBell className="text-xl text-gray-400" />
-        <FaSearch className="text-xl text-gray-400" />
-        <FaCommentDots className="text-xl text-gray-400" />
-        <FaUser className="text-xl text-gray-400" />
-      </div>
+      {/* Footer */}
+      <footer className="bg-blue-600 text-white text-center py-6 mt-auto">
+        <p>&copy; 2025 StreetWheels. All Rights Reserved.</p>
+      </footer>
     </div>
   );
-}
+};
+
+export default HomePage;
