@@ -6,6 +6,9 @@ import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 
+import CarSlider from "./components/CarSlider";
+import AboutUs from "./components/AboutUs";
+
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -20,11 +23,15 @@ function App() {
     <div>
       <Navbar />
       <Hero />
+      <CarSlider />
+      <AboutUs />
       <Services />
+      <ServiceDetails />
+      <CarShowcase />
+      <DriverDetails />
+      <UserReviews />
       <ContactForm />
       <Footer />
     </div>
   );
 }
-
-export default App;
