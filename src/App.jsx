@@ -1,26 +1,30 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './pages/Navbar';  // Import Navbar
-import HomePage from './pages/HomePage';
-import CarRentalPage from './pages/CarRentalPage';
-import SelfDrivingCarPage from './pages/SelfDrivingCarPage';
-import ActingDriverPage from './pages/ActingDriverPage'; // Import the Acting Driver Page
+import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Services from "./components/Services";
+import ContactForm from "./components/ContactForm";
+import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 
-const App = () => {
+function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loader />;
+
   return (
     <div>
-      {/* Navbar */}
       <Navbar />
-
-      {/* Routes for Pages */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/car-rental" element={<CarRentalPage />} />
-        <Route path="/self-driving" element={<SelfDrivingCarPage />} />
-        <Route path="/acting-drivers" element={<ActingDriverPage />} />
-      </Routes>
+      <Hero />
+      <Services />
+      <ContactForm />
+      <Footer />
     </div>
   );
-};
+}
 
 export default App;
