@@ -5,10 +5,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 
 export default function CarSlider() {
   const images = [
-    "/assets/slider1.jpg",
-    "/assets/slider2.jpg",
-    "/assets/slider3.jpg",
-    "/assets/slider4.jpg",
+    "/assets/images/slider.png",
   ];
 
   return (

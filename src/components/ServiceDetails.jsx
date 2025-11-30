@@ -10,7 +10,7 @@ export default function ServiceDetails() {
           All our cars are GPS-enabled, sanitized, and regularly serviced. Our self-drive options give you the freedom to travel your way, while our acting driver service connects you with experienced, background-verified drivers on demand.
         </p>
         <img
-          src="/assets/service-details.jpg"
+          src="/assets/images/service-details.png"
           alt="Service Details"
           className="w-full rounded-lg mt-6 shadow-lg"
         />

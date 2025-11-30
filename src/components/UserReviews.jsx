@@ -3,19 +3,19 @@ import React from "react";
 const reviews = [
   {
     id: 1,
-    name: "Priya Sharma",
+    name: "Jickson",
     comment: "The self-drive car was in excellent condition. Great experience!",
     rating: 5,
   },
   {
     id: 2,
-    name: "Rahul Kumar",
+    name: "Siva",
     comment: "Booking was easy and the driver was punctual and professional.",
     rating: 4,
   },
   {
     id: 3,
-    name: "Anjali Mehta",
+    name: "Vijay",
     comment: "Highly recommend Street Wheels! Affordable and smooth service.",
     rating: 5,
   },

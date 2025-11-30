@@ -3,19 +3,19 @@ export default function Services() {
   const services = [
     {
       title: "Car Rental",
-      image: "/assets/service-rental.jpg",
+      image: "/assets/images/service-rental.png",
       content:
         "We offer a wide range of rental vehicles including sedans, hatchbacks, and SUVs at the most affordable prices. Rent for a few hours, a day, or an entire week — flexible plans that suit your travel needs. All cars are sanitized and serviced regularly.",
     },
     {
       title: "Self Driving Cars",
-      image: "/assets/service-selfdrive.jpg",
+      image: "/assets/images/service-selfdrive.png",
       content:
         "Enjoy the freedom to drive yourself anywhere with our self-driving car service. Perfect for family trips, weekend getaways, or daily commutes. Easy pickup and drop, and no driver fees. Total privacy, total control.",
     },
     {
       title: "Acting Drivers",
-      image: "/assets/service-driver.jpg",
+      image: "/assets/images/service-driver.png",
       content:
         "Hire professional, background-verified drivers for your own vehicle. Whether it’s an emergency or planned trip, our drivers are punctual, polite, and well-trained. Available 24/7 for hourly or full-day bookings.",
     },

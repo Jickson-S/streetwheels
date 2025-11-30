@@ -9,7 +9,7 @@ export default function AboutUs() {
         <p>
           Our vehicles are well-maintained, clean, and regularly serviced to ensure you always enjoy a smooth ride. We offer flexible plans to suit all budgets and travel needs, from economy hatchbacks to luxurious SUVs. With options for self-drive or acting drivers, you’re in complete control of your journey.
         </p>
-        <img src="/assets/about-car.jpg" alt="About Us" className="w-full rounded-lg shadow-xl my-6" />
+        <img src="/assets/images/about-car.png" alt="About Us" className="w-full rounded-lg shadow-xl my-6" />
         <p>
           With a growing customer base and glowing reviews, we’re proud to serve customers across Chennai and surrounding regions. Choose Street Wheels for a superior experience with zero hassle, total comfort, and maximum trust.
         </p>

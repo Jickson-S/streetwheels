@@ -3,24 +3,24 @@ import React from "react";
 const drivers = [
   {
     id: 1,
-    name: "Suresh Kumar",
+    name: "Shankar",
     experience: "5+ years",
     rating: 4.8,
-    image: "/images/drivers/suresh.jpg",
+    image: "/assets/images/drivers/1.jpg",
   },
   {
     id: 2,
-    name: "Anand Raj",
-    experience: "3+ years",
+    name: "Deva",
+    experience: "4+ years",
     rating: 4.6,
-    image: "/images/drivers/anand.jpg",
+    image: "/assets/images/drivers/2.jpg",
   },
   {
     id: 3,
-    name: "Rahul Verma",
-    experience: "4+ years",
+    name: "Ravi",
+    experience: "3+ years",
     rating: 4.9,
-    image: "/images/drivers/rahul.jpg",
+    image: "/assets/images/drivers/3.jpg",
   },
 ];
 
