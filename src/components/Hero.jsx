@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import bmw from "assets/images/bmw.png";
+import bmw from "../assets/bmw.png";
 
 export default function Hero() {
   const [lightsOn, setLightsOn] = useState(false);
