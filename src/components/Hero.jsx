@@ -4,17 +4,31 @@ import bmw from "../assets/bmw.png";
 export default function Hero() {
   const [lightsOn, setLightsOn] = useState(false);
 
-  useEffect(() => {
-    const openTimer = setTimeout(() => setLightsOn(true), 500);   // Eye open
-    const closeTimer = setTimeout(() => setLightsOn(false), 2000); // Eye close
-    const finalOpenTimer = setTimeout(() => setLightsOn(true), 4000); // Permanent on
+useEffect(() => {
+  const timers = [];
 
-    return () => {
-      clearTimeout(openTimer);
-      clearTimeout(closeTimer);
-      clearTimeout(finalOpenTimer);
-    };
-  }, []);
+  // Blink 1
+  timers.push(setTimeout(() => setLightsOn(true), 500));
+  timers.push(setTimeout(() => setLightsOn(false), 1000));
+
+  // Blink 2
+  timers.push(setTimeout(() => setLightsOn(true), 1500));
+  timers.push(setTimeout(() => setLightsOn(false), 2000));
+
+  // Blink 3
+  timers.push(setTimeout(() => setLightsOn(true), 2500));
+  timers.push(setTimeout(() => setLightsOn(false), 3000));
+
+  // Blink 4
+  timers.push(setTimeout(() => setLightsOn(true), 3500));
+  timers.push(setTimeout(() => setLightsOn(false), 4000));
+
+  // Permanent ON
+  timers.push(setTimeout(() => setLightsOn(true), 6000));
+
+  // Cleanup timers on unmount
+  return () => timers.forEach(timer => clearTimeout(timer));
+}, []);
 
   return (
     <section className="relative h-screen w-full bg-black overflow-hidden flex flex-col">
