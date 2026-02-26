@@ -1,37 +1,62 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import bmw from "../assets/bmw.png";
 
 export default function Hero() {
-  const [lightsOn, setLightsOn] = useState(false);
+  const [phase, setPhase] = useState("off");
 
   useEffect(() => {
-    const timers = [];
+    const timeline = [
+      { state: "flash1", delay: 500 },
+      { state: "on", delay: 800 },
+      { state: "flash2", delay: 1200 },
+      { state: "off", delay: 1600 },
+      { state: "flash3", delay: 2000 },
+      { state: "on", delay: 2300 },
+      { state: "flash4", delay: 2700 },
+      { state: "off", delay: 3100 },
+    ];
 
-    // Blink 1
-    timers.push(setTimeout(() => setLightsOn(true), 500));
-    timers.push(setTimeout(() => setLightsOn(false), 1000));
+    const timers = timeline.map((step) =>
+      setTimeout(() => {
+        setPhase(step.state);
+      }, step.delay)
+    );
 
-    // Blink 2
-    timers.push(setTimeout(() => setLightsOn(true), 1500));
-    timers.push(setTimeout(() => setLightsOn(false), 2000));
-
-    // Blink 3
-    timers.push(setTimeout(() => setLightsOn(true), 2500));
-    timers.push(setTimeout(() => setLightsOn(false), 3000));
-
-    // Blink 4
-    timers.push(setTimeout(() => setLightsOn(true), 3500));
-    timers.push(setTimeout(() => setLightsOn(false), 4000));
-
-    // Permanent ON
-    timers.push(setTimeout(() => setLightsOn(true), 6000));
-
-    // Cleanup timers on unmount
-    return () => timers.forEach(timer => clearTimeout(timer));
+    return () => timers.forEach((timer) => clearTimeout(timer));
   }, []);
+
+  const getLightStyle = () => {
+    switch (phase) {
+      case "flash1":
+      case "flash2":
+      case "flash3":
+      case "flash4":
+        return "bg-white opacity-100 shadow-[0_0_80px_40px_rgba(255,255,255,0.7)]";
+      case "on":
+        return "bg-white opacity-90 shadow-[0_0_60px_30px_rgba(255,255,255,0.6)]";
+      default:
+        return "opacity-0";
+    }
+  };
+
+  const getScale = () => {
+    switch (phase) {
+      case "flash1":
+      case "flash2":
+      case "flash3":
+      case "flash4":
+        return 1.2;
+      case "on":
+        return 1.1;
+      default:
+        return 0.7;
+    }
+  };
 
   return (
     <section className="relative h-screen w-full bg-black overflow-hidden flex flex-col">
+      
       {/* Top Text */}
       <div className="z-20 px-6 pt-40 text-center animate-fadeIn">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
@@ -44,29 +69,45 @@ export default function Hero() {
 
       {/* Car Container */}
       <div className="flex-grow relative flex items-center justify-center">
-        {/* Car Image */}
-        <img
+
+        {/* Car Fade + Cinematic Zoom */}
+        <motion.img
           src={bmw}
           alt="BMW"
           className="w-full max-w-5xl object-contain relative z-0"
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.8 }}
         />
 
-        {/* Left Headlight */}
-        <div
-          className={`absolute top-[44%] left-[4%] md:top-[52%] md:left-[25%] 
-            w-20 h-20 md:w-32 md:h-32 rounded-full bg-white blur-3xl 
-            transition-all duration-1000 ${lightsOn ? "opacity-100 scale-110" : "opacity-0 scale-75"}`}
+        {/* LEFT HEADLIGHT */}
+        <motion.div
+          className={`absolute top-[44%] left-[4%] md:top-[52%] md:left-[25%]
+          w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-36 lg:h-36 rounded-full blur-3xl ${getLightStyle()}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: phase === "off" ? 0 : 1, scale: getScale() }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
         />
 
-        {/* Right Headlight */}
-        <div
-          className={`absolute top-[44%] right-[4%] md:top-[52%] md:right-[25%] 
-            w-20 h-20 md:w-32 md:h-32 rounded-full bg-white blur-3xl 
-            transition-all duration-1000 ${lightsOn ? "opacity-100 scale-110" : "opacity-0 scale-75"}`}
+        {/* RIGHT HEADLIGHT */}
+        <motion.div
+          className={`absolute top-[44%] right-[4%] md:top-[52%] md:right-[25%]
+          w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-36 lg:h-36 rounded-full blur-3xl ${getLightStyle()}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: phase === "off" ? 0 : 1, scale: getScale() }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+        />
+
+        {/* Ground Glow */}
+        <motion.div
+          className="absolute top-[65%] w-72 h-16 bg-white/20 blur-2xl rounded-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: phase.includes("on") ? 1 : 0 }}
+          transition={{ duration: 0.6 }}
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
       </div>
     </section>
   );
