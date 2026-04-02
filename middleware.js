@@ -9,7 +9,7 @@ export function middleware(request) {
     return NextResponse.redirect('https://streetmobile.vercel.app');
   }
 
-  return NextResponse.redirect('streetwheels.vercel.app');
+  return NextResponse.redirect('https://streetwheels.vercel.app');
 }
 
 export const config = {
